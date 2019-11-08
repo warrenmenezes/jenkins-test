@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage('Prepare') {
             environment {
-                APP_NAME = getAppCenterAppNameFromBranch(env.BRANCH_NAME)
+                APP_NAME = getAppCenterAppNameFromBranch()
             }
             steps {
                 echo 'Preparing'
@@ -21,11 +21,11 @@ pipeline {
     }
 }
 
-def getAppCenterAppNameFromBranch(String branch) {
-    if (branch.startsWith('release/')) {
+def getAppCenterAppNameFromBranch() {
+    if ($ { env.BRANCH_NAME }.startsWith('release/')) {
         return 'Android-RC'
     }
-    if (branch == 'dev-feature') {
+    if ($ { env.BRANCH_NAME } == 'dev-feature') {
         return 'Android-Feature'
     }
     return 'Fiix-CMMS-Staging';
