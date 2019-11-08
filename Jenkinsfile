@@ -22,10 +22,10 @@ pipeline {
 }
 
 def getAppCenterAppNameFromBranch() {
-    if ($ { env.BRANCH_NAME }.startsWith('release/')) {
+    if (BRANCH_NAME.startsWith('release/')) {
         return 'Android-RC'
     }
-    if ($ { env.BRANCH_NAME } == 'dev-feature') {
+    if (BRANCH_NAME == 'dev-feature') {
         return 'Android-Feature'
     }
     return 'Fiix-CMMS-Staging';
