@@ -13,6 +13,7 @@ pipeline {
             }
             steps {
                 echo 'Preparing'
+                sh 'git submodule update --init --recursive'
                 echo "Branch Name: $APP_NAME"
 
             }
