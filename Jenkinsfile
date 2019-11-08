@@ -8,10 +8,12 @@ pipeline {
     }
     stages {
         stage('Prepare') {
+            environment {
+                APP_NAME = getAppCenterAppNameFromBranch(env.BRANCH_NAME)
+            }
             steps {
-                echo 'Preparing '
-                def appName = getAppCenterAppNameFromBranch(env.BRANCH_NAME)
-                echo "Branch Name: $appName"
+                echo 'Preparing'
+                echo "Branch Name: $APP_NAME"
 
             }
         }
