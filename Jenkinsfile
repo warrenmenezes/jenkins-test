@@ -4,6 +4,7 @@ pipeline {
         timestamps()
     }
     environment {
+        DEV_VERSION_FILE = "../../../dev-ci-version.properties"
     }
     stages {
         stage('Prepare') {
