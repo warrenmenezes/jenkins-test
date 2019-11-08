@@ -10,8 +10,9 @@ pipeline {
         stage('Prepare') {
             steps {
                 echo 'Preparing '
-                echo "Branch Name: ${env.BRANCH_NAME}"
-                getAppCenterAppNameFromBranch(env.BRANCH_NAME)
+                appName = getAppCenterAppNameFromBranch(env.BRANCH_NAME)
+                echo "Branch Name: $appName"
+
             }
         }
     }
