@@ -1,3 +1,8 @@
+def RELEASE_APP_NAME = 'Android-RC'
+def FEATURE_APP_NAME = 'Android-RC'
+def STAGING_APP_NAME = 'Android-RC'
+
+
 pipeline {
     agent any
     options {
@@ -9,7 +14,7 @@ pipeline {
     stages {
         stage('Prepare') {
             environment {
-                APP_NAME = getAppCenterAppNameFromBranch()
+                APP_NAME = getAppCenterAppNameFromBranch(env.BRANCH_NAME)
             }
             steps {
                 echo 'Preparing'
@@ -21,13 +26,13 @@ pipeline {
     }
 }
 
-def getAppCenterAppNameFromBranch() {
-    if (BRANCH_NAME.startsWith('release/')) {
-        return 'Android-RC'
+def getAppCenterAppNameFromBranch(String branch) {
+    if (branch.startsWith('release/')) {
+        return RELEASE_APP_NAME
     }
-    if (BRANCH_NAME == 'dev-feature') {
-        return 'Android-Feature'
+    if (branch == 'dev-feature') {
+        return FEATURE_APP_NAME
     }
-    return 'Fiix-CMMS-Staging';
+    return STAGING_APP_NAME;
 }
 
