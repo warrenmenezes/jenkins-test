@@ -1,6 +1,6 @@
-def RELEASE_APP_NAME = 'Android-RC'
-def FEATURE_APP_NAME = 'Android-RC'
-def STAGING_APP_NAME = 'Android-RC'
+RELEASE_APP_NAME = 'Android-RC'
+FEATURE_APP_NAME = 'Android-RC'
+STAGING_APP_NAME = 'Android-RC'
 
 
 pipeline {
@@ -28,11 +28,11 @@ pipeline {
 
 def getAppCenterAppNameFromBranch(String branch) {
     if (branch.startsWith('release/')) {
-        return $RELEASE_APP_NAME
+        return RELEASE_APP_NAME
     }
     if (branch == 'dev-feature') {
-        return $FEATURE_APP_NAME
+        return FEATURE_APP_NAME
     }
-    return $STAGING_APP_NAME;
+    return STAGING_APP_NAME
 }
 
