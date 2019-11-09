@@ -28,11 +28,11 @@ pipeline {
 
 def getAppCenterAppNameFromBranch(String branch) {
     if (branch.startsWith('release/')) {
-        return RELEASE_APP_NAME
+        return $RELEASE_APP_NAME
     }
     if (branch == 'dev-feature') {
-        return FEATURE_APP_NAME
+        return $FEATURE_APP_NAME
     }
-    return STAGING_APP_NAME;
+    return $STAGING_APP_NAME;
 }
 
