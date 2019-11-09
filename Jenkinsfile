@@ -26,6 +26,7 @@ pipeline {
     }
 }
 
+
 def getAppCenterAppNameFromBranch(String branch) {
     if (branch.startsWith('release/')) {
         return RELEASE_APP_NAME
